@@ -106,6 +106,8 @@ function loadCalculator(type) {
             Gross profit:
             <br><br>
             Clean profit: 
+            <br><br>
+            Margin: 
             <br>
 
         </div>
@@ -179,13 +181,90 @@ function loadCalculator(type) {
             Gross profit: 
             <br><br>
             Clean profit:
+            <br><br>
+            Margin: 
             <br>
 
         </div>
             `;
             break;
         case 'gala':
-            inputHTML = ` <h1>otw</h1>
+            inputHTML = ` <div id="input-fields">
+
+            <span>Num. of packs</span>
+            <input class="input box" type="number" id="pack" placeholder="">
+            <span>Rate</span>
+            <input class="input box" type="number" id="rate" placeholder="">
+            <img src="images/gala/starfuel.png" class="lil-img crime-img wave">
+            <input class="input box" type="number" id="fuel" placeholder="">
+            <br>
+            
+
+            <div class="galaspace">
+            <img src="images/gala/tacticaldrone.png" class="lil-img gala-img">
+            <input class="input box" type="number" id="drone" placeholder="">
+            <img src="images/gala/teleportercharge.png" class="lil-img gala-img">
+            <input class="input box" type="number" id="tele" placeholder="">
+            <br>
+        </div>
+
+            <div class="galaspace">
+            <img src="images/gala/aibrain.png" class="lil-img gala-img">
+            <input class="galainput input box" type="number" id="c1" placeholder="">
+            <img src="images/gala/cyborgdiplomat.png" class="lil-img gala-img">
+            <input class="galainput input box" type="number" id="c2" placeholder="">
+            <img src="images/gala/galactibolt.png" class="lil-img gala-img">
+            <input class="galainput input box" type="number" id="c3" placeholder="">
+            <img src="images/gala/gigablaster.png" class="lil-img gala-img">
+            <input class="galainput input box" type="number" id="c4" placeholder="">
+            <img src="images/gala/growtontorpedo.png" class="lil-img gala-img">
+            <input class="galainput input box" type="number" id="c5" placeholder="">
+            <br>
+            </div>
+
+            <div class="galaspace">
+            <img src="images/gala/hypershields.png" class="lil-img gala-img">
+            <input class="galainput input box" type="number" id="c6" placeholder="">
+            <img src="images/gala/quadriscanner.png" class="lil-img gala-img">
+            <input class="galainput input box" type="number" id="c7" placeholder="">
+            <img src="images/gala/spacemeds.png" class="lil-img gala-img">
+            <input class="galainput input box" type="number" id="c8" placeholder="">
+            <img src="images/gala/starsupplies.png" class="lil-img gala-img">
+            <input class="galainput input box" type="number" id="c9" placeholder="">
+            <img src="images/gala/stellardocuments.png" class="lil-img gala-img">
+            <input class="galainput input box" type="number" id="c10" placeholder="">
+            <br>
+            </div>
+            
+            
+
+            <div class="info-container">
+            <button id="info-button" class="box"><img class="info" src="images/info.png"></button>
+            <div class="info-box surg-info box">
+                <p>Info</p>
+                <ul>
+                    <li>- Star fuel and normal tool input takes in number of item per WL</li>
+                    <br>
+                    <li>- Tactical Drone and Teleporter Charge input takes in price per 200 tool</li>
+                </ul>
+            </div>
+            </div>
+
+            <button id="calculate-button" class="box" onclick="calculateGala()">Calculate</button>
+
+            
+        </div>
+        <div id="result">
+            Cost:
+            <br><br>
+            Gross profit: 
+            <br><br>
+            Clean profit:
+            <br><br>
+            Margin: 
+            <br>
+
+        </div>
             `;
             break;
         default:
@@ -240,10 +319,21 @@ function calculateCrime() {
         const dl = getDL(profit);
         const wl = profit - (dl * 100)
         resultContainer.innerHTML = resultContainer.innerHTML + `Clean profit: <span class="resultnum">${dl} <img class="wl" src="./images/dl.png"> ${wl} <img class="wl" src="./images/wl.png"></span>`;
+    } else if (profit<0) {
+        resultContainer.innerHTML = resultContainer.innerHTML + `Clean profit: <span class="resultnum margin-n">${profit} <img class="wl" src="./images/wl.png"></span>`;
     } else {
         resultContainer.innerHTML = resultContainer.innerHTML + `Clean profit: <span class="resultnum">${profit} <img class="wl" src="./images/wl.png"></span>`;
     }
         
+    resultContainer.innerHTML = resultContainer.innerHTML + `<br><br>`;
+
+    if (profit >= 0) {
+        const margin = Math.round((gross/cost - 1)* 1000)/10;
+        resultContainer.innerHTML = resultContainer.innerHTML + `Margin: <span class="resultnum margin-p">${margin}%</span>`;
+    } else {
+        const margin = Math.round((1- gross/cost)* 1000)/10;
+        resultContainer.innerHTML = resultContainer.innerHTML + `Margin: <span class="resultnum margin-n">-${margin}%</span>`;
+    }
     
     }
 
@@ -257,10 +347,6 @@ function calculateSurg () {
     const total_tool = pack * 260
     const tool_each = total_tool / 13
     const tool = (tool_each / parseFloat(document.getElementById('c1').value) + tool_each / parseFloat(document.getElementById('c2').value) + tool_each / parseFloat(document.getElementById('c3').value) + tool_each/parseFloat(document.getElementById('c4').value) + tool_each/parseFloat(document.getElementById('c5').value) + tool_each/parseFloat(document.getElementById('c6').value) + tool_each/parseFloat(document.getElementById('c7').value) + tool_each/parseFloat(document.getElementById('c8').value) + tool_each/parseFloat(document.getElementById('c9').value) + tool_each/parseFloat(document.getElementById('c10').value) + tool_each/parseFloat(document.getElementById('c11').value) + tool_each/parseFloat(document.getElementById('c12').value) + (tool_each * stit / 200))
-
-    console.log(surge);
-    console.log(total_tool);
-    console.log(tool);
 
     const cost = pack * rate
     const gross = Math.round(surge + tool)
@@ -294,7 +380,80 @@ function calculateSurg () {
         const dl = getDL(profit);
         const wl = profit - (dl * 100)
         resultContainer.innerHTML = resultContainer.innerHTML + `Clean profit: <span class="resultnum">${dl} <img class="wl" src="./images/dl.png"> ${wl} <img class="wl" src="./images/wl.png"></span>`;
+    } else if (profit<0) {
+        resultContainer.innerHTML = resultContainer.innerHTML + `Clean profit: <span class="resultnum margin-n">${profit} <img class="wl" src="./images/wl.png"></span>`;
     } else {
         resultContainer.innerHTML = resultContainer.innerHTML + `Clean profit: <span class="resultnum">${profit} <img class="wl" src="./images/wl.png"></span>`;
+    }
+
+    resultContainer.innerHTML = resultContainer.innerHTML + `<br><br>`;
+
+    if (profit >= 0) {
+        const margin = Math.round((gross/cost - 1)* 1000)/10;
+        resultContainer.innerHTML = resultContainer.innerHTML + `Margin: <span class="resultnum margin-p">${margin}%</span>`;
+    } else {
+        const margin = Math.round((1- gross/cost)* 1000)/10;
+        resultContainer.innerHTML = resultContainer.innerHTML + `Margin: <span class="resultnum margin-n">-${margin}%</span>`;
+    }
+}
+
+function calculateGala () {
+
+    const pack = parseFloat(document.getElementById('pack').value);
+    const rate = parseFloat(document.getElementById('rate').value);
+    const fuel = pack * 25 /parseFloat(document.getElementById('fuel').value);
+    const drone = parseFloat(document.getElementById('drone').value);
+    const tele = parseFloat(document.getElementById('tele').value);
+
+    const total_tool = pack * 60
+    const tool_each = total_tool / 12
+    const tool = (tool_each / parseFloat(document.getElementById('c1').value) + tool_each / parseFloat(document.getElementById('c2').value) + tool_each / parseFloat(document.getElementById('c3').value) + tool_each/parseFloat(document.getElementById('c4').value) + tool_each/parseFloat(document.getElementById('c5').value) + tool_each/parseFloat(document.getElementById('c6').value) + tool_each/parseFloat(document.getElementById('c7').value) + tool_each/parseFloat(document.getElementById('c8').value) + tool_each/parseFloat(document.getElementById('c9').value) + tool_each/parseFloat(document.getElementById('c10').value) + (tool_each * drone / 200) + (tool_each * tele / 200))
+
+    const cost = pack * rate
+    const gross = Math.round(fuel + tool)
+    const profit =  Math.round(gross - cost);
+    
+    const resultContainer = document.getElementById('result');
+    resultContainer.innerHTML = "";
+
+
+    if (cost >= 100) {
+        const dl = getDL(cost);
+        const wl = cost - (dl * 100)
+        resultContainer.innerHTML = resultContainer.innerHTML + `Cost: <span class="resultnum">${dl} <img class="wl" src="./images/dl.png"> ${wl} <img class="wl" src="./images/wl.png"></span>`;
+    } else {
+        resultContainer.innerHTML = resultContainer.innerHTML + `Cost: <span class="resultnum">${cost} <img class="wl" src="./images/wl.png"></span>`;
+    }
+
+    resultContainer.innerHTML = resultContainer.innerHTML + `<br><br>`;
+
+    if (gross >= 100) {
+        const dl = getDL(gross);
+        const wl = gross - (dl * 100)
+        resultContainer.innerHTML = resultContainer.innerHTML + `Gross profit: <span class="resultnum">${dl} <img class="wl" src="./images/dl.png"> ${wl} <img class="wl" src="./images/wl.png"></span>`;
+    } else {
+        resultContainer.innerHTML = resultContainer.innerHTML + `Gross profit: <span class="resultnum">${gross} <img class="wl" src="./images/wl.png"></span>`;
+    }
+
+    resultContainer.innerHTML = resultContainer.innerHTML + `<br><br>`;
+
+    if (profit >= 100) {
+        const dl = getDL(profit);
+        const wl = profit - (dl * 100)
+        resultContainer.innerHTML = resultContainer.innerHTML + `Clean profit: <span class="resultnum">${dl} <img class="wl" src="./images/dl.png"> ${wl} <img class="wl" src="./images/wl.png"></span>`;
+    } else if (profit<0) {
+        resultContainer.innerHTML = resultContainer.innerHTML + `Clean profit: <span class="resultnum margin-n">${profit} <img class="wl" src="./images/wl.png"></span>`;
+    } else {
+        resultContainer.innerHTML = resultContainer.innerHTML + `Clean profit: <span class="resultnum">${profit} <img class="wl" src="./images/wl.png"></span>`;
+    }
+
+    resultContainer.innerHTML = resultContainer.innerHTML + `<br><br>`;
+
+    if (profit >= 0) {
+        const margin = Math.round((gross/cost - 1)* 1000)/10;
+        resultContainer.innerHTML = resultContainer.innerHTML + `Margin: <span class="resultnum margin-p">${margin}%</span>`;
+    } else {
+        const margin = Math.round((1- gross/cost)* 1000)/10;
+        resultContainer.innerHTML = resultContainer.innerHTML + `Margin: <span class="resultnum margin-n">-${margin}%</span>`;
     }
 }
