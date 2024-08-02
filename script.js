@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function () {
     const navbarLinks = document.querySelectorAll('#nav a');
     navbarLinks.forEach(link => {
@@ -24,7 +23,6 @@ function loadCalculator(type) {
     inputFields.innerHTML = '';
 
     let inputHTML = '';
-
     switch (type) {
         case 'crime':
             inputHTML = `
@@ -96,21 +94,11 @@ function loadCalculator(type) {
                 </ul>
             </div>
             </div>
-            <button id="calculate-button" class="box" onclick="calculateCrime()">Calculate</button>
 
-            
-        </div>
-        <div id="result">
-            Cost: 
-            <br><br>
-            Gross profit:
-            <br><br>
-            Clean profit: 
-            <br><br>
-            Margin: 
-            <br>
+            <button id="calculate-button" class="box" onclick="calculateCrime()">Calculate</button> 
 
         </div>
+        <div id="result"></div>
             `;
             break;
         case 'surg':
@@ -173,19 +161,8 @@ function loadCalculator(type) {
 
             <button id="calculate-button" class="box" onclick="calculateSurg()">Calculate</button>
 
-            
         </div>
-        <div id="result">
-            Cost:
-            <br><br>
-            Gross profit: 
-            <br><br>
-            Clean profit:
-            <br><br>
-            Margin: 
-            <br>
-
-        </div>
+        <div id="result"></div>
             `;
             break;
         case 'gala':
@@ -199,14 +176,13 @@ function loadCalculator(type) {
             <input class="input box" type="number" id="fuel" placeholder="">
             <br>
             
-
             <div class="galaspace">
             <img src="images/gala/tacticaldrone.png" class="lil-img gala-img">
             <input class="input box" type="number" id="drone" placeholder="">
             <img src="images/gala/teleportercharge.png" class="lil-img gala-img">
             <input class="input box" type="number" id="tele" placeholder="">
             <br>
-        </div>
+            </div>
 
             <div class="galaspace">
             <img src="images/gala/aibrain.png" class="lil-img gala-img">
@@ -236,8 +212,6 @@ function loadCalculator(type) {
             <br>
             </div>
             
-            
-
             <div class="info-container">
             <button id="info-button" class="box"><img class="info" src="images/info.png"></button>
             <div class="info-box surg-info box">
@@ -252,25 +226,14 @@ function loadCalculator(type) {
 
             <button id="calculate-button" class="box" onclick="calculateGala()">Calculate</button>
 
-            
         </div>
-        <div id="result">
-            Cost:
-            <br><br>
-            Gross profit: 
-            <br><br>
-            Clean profit:
-            <br><br>
-            Margin: 
-            <br>
-
-        </div>
+        <div id="result"></div>
             `;
             break;
         default:
     }
-
     inputFields.innerHTML = inputHTML;
+    render_result(NaN,0,0);
 }
 
 function getDL(wl) {
@@ -291,51 +254,8 @@ function calculateCrime() {
     const gross = Math.round((pack * wave) + card)
     const profit =  Math.round(gross - cost);
     
-    const resultContainer = document.getElementById('result');
-    resultContainer.innerHTML = "";
-
-
-    if (cost >= 100) {
-        const dl = getDL(cost);
-        const wl = cost - (dl * 100)
-        resultContainer.innerHTML = resultContainer.innerHTML + `Cost: <span class="resultnum">${dl} <img class="wl" src="./images/dl.png"> ${wl} <img class="wl" src="./images/wl.png"></span>`;
-    } else {
-        resultContainer.innerHTML = resultContainer.innerHTML + `Cost: <span class="resultnum">${cost} <img class="wl" src="./images/wl.png"></span>`;
-    }
-
-    resultContainer.innerHTML = resultContainer.innerHTML + `<br><br>`;
-
-    if (gross >= 100) {
-        const dl = getDL(gross);
-        const wl = gross - (dl * 100)
-        resultContainer.innerHTML = resultContainer.innerHTML + `Gross profit: <span class="resultnum">${dl} <img class="wl" src="./images/dl.png"> ${wl} <img class="wl" src="./images/wl.png"></span>`;
-    } else {
-        resultContainer.innerHTML = resultContainer.innerHTML + `Gross profit: <span class="resultnum">${gross} <img class="wl" src="./images/wl.png"></span>`;
-    }
-
-    resultContainer.innerHTML = resultContainer.innerHTML + `<br><br>`;
-
-    if (profit >= 100) {
-        const dl = getDL(profit);
-        const wl = profit - (dl * 100)
-        resultContainer.innerHTML = resultContainer.innerHTML + `Clean profit: <span class="resultnum">${dl} <img class="wl" src="./images/dl.png"> ${wl} <img class="wl" src="./images/wl.png"></span>`;
-    } else if (profit<0) {
-        resultContainer.innerHTML = resultContainer.innerHTML + `Clean profit: <span class="resultnum margin-n">${profit} <img class="wl" src="./images/wl.png"></span>`;
-    } else {
-        resultContainer.innerHTML = resultContainer.innerHTML + `Clean profit: <span class="resultnum">${profit} <img class="wl" src="./images/wl.png"></span>`;
-    }
-        
-    resultContainer.innerHTML = resultContainer.innerHTML + `<br><br>`;
-
-    if (profit >= 0) {
-        const margin = Math.round((gross/cost - 1)* 1000)/10;
-        resultContainer.innerHTML = resultContainer.innerHTML + `Margin: <span class="resultnum margin-p">${margin}%</span>`;
-    } else {
-        const margin = Math.round((1- gross/cost)* 1000)/10;
-        resultContainer.innerHTML = resultContainer.innerHTML + `Margin: <span class="resultnum margin-n">-${margin}%</span>`;
-    }
-    
-    }
+    render_result(cost, gross, profit);
+}
 
 function calculateSurg () {
 
@@ -352,49 +272,7 @@ function calculateSurg () {
     const gross = Math.round(surge + tool)
     const profit =  Math.round(gross - cost);
     
-    const resultContainer = document.getElementById('result');
-    resultContainer.innerHTML = "";
-
-
-    if (cost >= 100) {
-        const dl = getDL(cost);
-        const wl = cost - (dl * 100)
-        resultContainer.innerHTML = resultContainer.innerHTML + `Cost: <span class="resultnum">${dl} <img class="wl" src="./images/dl.png"> ${wl} <img class="wl" src="./images/wl.png"></span>`;
-    } else {
-        resultContainer.innerHTML = resultContainer.innerHTML + `Cost: <span class="resultnum">${cost} <img class="wl" src="./images/wl.png"></span>`;
-    }
-
-    resultContainer.innerHTML = resultContainer.innerHTML + `<br><br>`;
-
-    if (gross >= 100) {
-        const dl = getDL(gross);
-        const wl = gross - (dl * 100)
-        resultContainer.innerHTML = resultContainer.innerHTML + `Gross profit: <span class="resultnum">${dl} <img class="wl" src="./images/dl.png"> ${wl} <img class="wl" src="./images/wl.png"></span>`;
-    } else {
-        resultContainer.innerHTML = resultContainer.innerHTML + `Gross profit: <span class="resultnum">${gross} <img class="wl" src="./images/wl.png"></span>`;
-    }
-
-    resultContainer.innerHTML = resultContainer.innerHTML + `<br><br>`;
-
-    if (profit >= 100) {
-        const dl = getDL(profit);
-        const wl = profit - (dl * 100)
-        resultContainer.innerHTML = resultContainer.innerHTML + `Clean profit: <span class="resultnum">${dl} <img class="wl" src="./images/dl.png"> ${wl} <img class="wl" src="./images/wl.png"></span>`;
-    } else if (profit<0) {
-        resultContainer.innerHTML = resultContainer.innerHTML + `Clean profit: <span class="resultnum margin-n">${profit} <img class="wl" src="./images/wl.png"></span>`;
-    } else {
-        resultContainer.innerHTML = resultContainer.innerHTML + `Clean profit: <span class="resultnum">${profit} <img class="wl" src="./images/wl.png"></span>`;
-    }
-
-    resultContainer.innerHTML = resultContainer.innerHTML + `<br><br>`;
-
-    if (profit >= 0) {
-        const margin = Math.round((gross/cost - 1)* 1000)/10;
-        resultContainer.innerHTML = resultContainer.innerHTML + `Margin: <span class="resultnum margin-p">${margin}%</span>`;
-    } else {
-        const margin = Math.round((1- gross/cost)* 1000)/10;
-        resultContainer.innerHTML = resultContainer.innerHTML + `Margin: <span class="resultnum margin-n">-${margin}%</span>`;
-    }
+    render_result(cost, gross, profit);
 }
 
 function calculateGala () {
@@ -413,47 +291,54 @@ function calculateGala () {
     const gross = Math.round(fuel + tool)
     const profit =  Math.round(gross - cost);
     
+    render_result(cost, gross, profit);
+}
+
+function render_result(cost, gross, profit) {
     const resultContainer = document.getElementById('result');
-    resultContainer.innerHTML = "";
+    resultContainer.innerHTML = '';
 
-
-    if (cost >= 100) {
-        const dl = getDL(cost);
-        const wl = cost - (dl * 100)
-        resultContainer.innerHTML = resultContainer.innerHTML + `Cost: <span class="resultnum">${dl} <img class="wl" src="./images/dl.png"> ${wl} <img class="wl" src="./images/wl.png"></span>`;
+    if (isNaN(cost) || isNaN(gross) || isNaN(profit)) {
+        resultContainer.innerHTML = resultContainer.innerHTML + `Cost: <span class="resultnum"> 0 <img class="wl" src="./images/wl.png"></span><br><br>Gross profit: <span class="resultnum"> 0 <img class="wl" src="./images/wl.png"></span><br><br>Clean profit: <span class="resultnum"> 0 <img class="wl" src="./images/wl.png"></span><br><br>Margin: <span class="resultnum"> 0% </span>`;
     } else {
-        resultContainer.innerHTML = resultContainer.innerHTML + `Cost: <span class="resultnum">${cost} <img class="wl" src="./images/wl.png"></span>`;
-    }
+        if (cost >= 100) {
+            const dl = getDL(cost);
+            const wl = cost - (dl * 100)
+            resultContainer.innerHTML = resultContainer.innerHTML + `Cost: <span class="resultnum">${dl} <img class="wl" src="./images/dl.png"> ${wl} <img class="wl" src="./images/wl.png"></span>`;
+        } else {
+            resultContainer.innerHTML = resultContainer.innerHTML + `Cost: <span class="resultnum">${cost} <img class="wl" src="./images/wl.png"></span>`;
+        }
 
-    resultContainer.innerHTML = resultContainer.innerHTML + `<br><br>`;
+        resultContainer.innerHTML = resultContainer.innerHTML + `<br><br>`;
 
-    if (gross >= 100) {
-        const dl = getDL(gross);
-        const wl = gross - (dl * 100)
-        resultContainer.innerHTML = resultContainer.innerHTML + `Gross profit: <span class="resultnum">${dl} <img class="wl" src="./images/dl.png"> ${wl} <img class="wl" src="./images/wl.png"></span>`;
-    } else {
-        resultContainer.innerHTML = resultContainer.innerHTML + `Gross profit: <span class="resultnum">${gross} <img class="wl" src="./images/wl.png"></span>`;
-    }
+        if (gross >= 100) {
+            const dl = getDL(gross);
+            const wl = gross - (dl * 100)
+            resultContainer.innerHTML = resultContainer.innerHTML + `Gross profit: <span class="resultnum">${dl} <img class="wl" src="./images/dl.png"> ${wl} <img class="wl" src="./images/wl.png"></span>`;
+        } else {
+            resultContainer.innerHTML = resultContainer.innerHTML + `Gross profit: <span class="resultnum">${gross} <img class="wl" src="./images/wl.png"></span>`;
+        }
 
-    resultContainer.innerHTML = resultContainer.innerHTML + `<br><br>`;
+        resultContainer.innerHTML = resultContainer.innerHTML + `<br><br>`;
 
-    if (profit >= 100) {
-        const dl = getDL(profit);
-        const wl = profit - (dl * 100)
-        resultContainer.innerHTML = resultContainer.innerHTML + `Clean profit: <span class="resultnum">${dl} <img class="wl" src="./images/dl.png"> ${wl} <img class="wl" src="./images/wl.png"></span>`;
-    } else if (profit<0) {
-        resultContainer.innerHTML = resultContainer.innerHTML + `Clean profit: <span class="resultnum margin-n">${profit} <img class="wl" src="./images/wl.png"></span>`;
-    } else {
-        resultContainer.innerHTML = resultContainer.innerHTML + `Clean profit: <span class="resultnum">${profit} <img class="wl" src="./images/wl.png"></span>`;
-    }
+        if (profit >= 100) {
+            const dl = getDL(profit);
+            const wl = profit - (dl * 100)
+            resultContainer.innerHTML = resultContainer.innerHTML + `Clean profit: <span class="resultnum">${dl} <img class="wl" src="./images/dl.png"> ${wl} <img class="wl" src="./images/wl.png"></span>`;
+        } else if (profit < 0) {
+            resultContainer.innerHTML = resultContainer.innerHTML + `Clean profit: <span class="resultnum margin-n">${profit} <img class="wl" src="./images/wl.png"></span>`;
+        } else {
+            resultContainer.innerHTML = resultContainer.innerHTML + `Clean profit: <span class="resultnum">${profit} <img class="wl" src="./images/wl.png"></span>`;
+        }
 
-    resultContainer.innerHTML = resultContainer.innerHTML + `<br><br>`;
+        resultContainer.innerHTML = resultContainer.innerHTML + `<br><br>`;
 
-    if (profit >= 0) {
-        const margin = Math.round((gross/cost - 1)* 1000)/10;
-        resultContainer.innerHTML = resultContainer.innerHTML + `Margin: <span class="resultnum margin-p">${margin}%</span>`;
-    } else {
-        const margin = Math.round((1- gross/cost)* 1000)/10;
-        resultContainer.innerHTML = resultContainer.innerHTML + `Margin: <span class="resultnum margin-n">-${margin}%</span>`;
+        if (profit >= 0) {
+            const margin = Math.round((gross/cost - 1)* 1000)/10;
+            resultContainer.innerHTML = resultContainer.innerHTML + `Margin: <span class="resultnum margin-p">${margin}%</span>`;
+        } else {
+            const margin = Math.round((1- gross/cost)* 1000)/10;
+            resultContainer.innerHTML = resultContainer.innerHTML + `Margin: <span class="resultnum margin-n">-${margin}%</span>`;
+        }
     }
 }
