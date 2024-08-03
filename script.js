@@ -30,6 +30,7 @@ function loadCalculator(type) {
 
             <span>Num. of packs</span>
             <input class="input box" type="number" id="pack" placeholder="">
+            <div class="mbrr"><br></div>
             <span>Rate</span>
             <input class="input box" type="number" id="rate" placeholder="">
             <img src="images/crime/wave.png" class="lil-img crime-img wave">
@@ -40,44 +41,49 @@ function loadCalculator(type) {
             <input class="input box" type="number" id="c1" placeholder="">
             <img src="images/crime/incinerate.png" class="lil-img crime-img">
             <input class="input box" type="number" id="c2" placeholder="">
+            <div class="mbrr"><br></div>
             <img src="images/crime/flameon.png" class="lil-img crime-img">
             <input class="input box" type="number" id="c3" placeholder="">
             <img src="images/crime/liquify.png" class="lil-img crime-img">
             <input class="input box" type="number" id="c4" placeholder="">
+            <div class="mbrr"><br></div>
             <img src="images/crime/overheat.png" class="lil-img crime-img">
             <input class="input box" type="number" id="c5" placeholder="">
-            <br>
-
+            <div class="mbr"><br></div>
             <img src="images/crime/iceshards.png" class="lil-img crime-img">
             <input class="input box" type="number" id="c6" placeholder="">
+            <div class="mbrr"><br></div>
             <img src="images/crime/frostbreath.png" class="lil-img crime-img">
             <input class="input box" type="number" id="c7" placeholder="">
             <img src="images/crime/icebarrier.png" class="lil-img crime-img">
             <input class="input box" type="number" id="c8" placeholder="">
+            <div class="mbrr"><br></div>
             <img src="images/crime/puddle.png" class="lil-img crime-img">
             <input class="input box" type="number" id="c9" placeholder="">
             <img src="images/crime/frozenmirror.png" class="lil-img crime-img">
             <input class="input box" type="number" id="c10" placeholder="">
             <br>
-
             <img src="images/crime/superstrength.png" class="lil-img crime-img">
             <input class="input box" type="number" id="c11" placeholder="">
             <img src="images/crime/superspeed.png" class="lil-img crime-img">
             <input class="input box" type="number" id="c12" placeholder="">
+            <div class="mbrr"><br></div>
             <img src="images/crime/enrage.png" class="lil-img crime-img">
             <input class="input box" type="number" id="c13" placeholder="">
             <img src="images/crime/crush.png" class="lil-img crime-img">
             <input class="input box" type="number" id="c14" placeholder="">
+            <div class="mbrr"><br></div>
             <img src="images/crime/regeneration.png" class="lil-img crime-img">
             <input class="input box" type="number" id="c15" placeholder="">
-            <br>
-
+            <div class="mbr"><br></div>
             <img src="images/crime/shockingfist.png" class="lil-img crime-img">
             <input class="input box" type="number" id="c16" placeholder="">
+            <div class="mbrr"><br></div>
             <img src="images/crime/thunderstorm.png" class="lil-img crime-img">
             <input class="input box" type="number" id="c17" placeholder="">
             <img src="images/crime/overcharge.png" class="lil-img crime-img">
             <input class="input box" type="number" id="c18" placeholder="">
+            <div class="mbrr"><br></div>
             <img src="images/crime/megawattpulse.png" class="lil-img crime-img">
             <input class="input box" type="number" id="c19" placeholder="">
             <img src="images/crime/resuscitate.png" class="lil-img crime-img">
@@ -107,47 +113,55 @@ function loadCalculator(type) {
 
             <span>Num. of packs</span>
             <input class="input box" type="number" id="pack" placeholder="">
+            <div class="mbrr"><br></div>
             <span>Rate</span>
             <input class="input box" type="number" id="rate" placeholder="">
-            <img src="images/surg/surge.png" class="lil-img crime-img wave">
+            <img src="images/surg/surge.png" class="lil-img crime-img wave surge">
             <input class="input box" type="number" id="surge" placeholder="">
+            <div class="mbrr"><br></div>
             <img src="images/surg/stitches.png" class="lil-img surg-img">
             <input class="input box" type="number" id="stit" placeholder="">
-            <br>
+            <div class="mbr"><br></div>
 
             <img src="images/surg/anesthetic.png" class="lil-img surg-img">
             <input class="input box surg-input" type="number" id="c1" placeholder="">
+            <div class="mbrr"><br></div>
             <img src="images/surg/antibiotics.png" class="lil-img surg-img">
             <input class="input box surg-input" type="number" id="c2" placeholder="">
             <img src="images/surg/antiseptic.png" class="lil-img surg-img">
             <input class="input box surg-input" type="number" id="c3" placeholder="">
+            <div class="mbrr"><br></div>
             <img src="images/surg/clamp.png" class="lil-img surg-img">
             <input class="input box surg-input" type="number" id="c4" placeholder="">
-            <br>
+            <div class="mbr"><br></div>
 
             <img src="images/surg/defibrillator.png" class="lil-img surg-img">
             <input class="input box surg-input" type="number" id="c5" placeholder="">
+            <div class="mbrr"><br></div>
             <img src="images/surg/labkit.png" class="lil-img surg-img">
             <input class="input box surg-input" type="number" id="c6" placeholder="">
             <img src="images/surg/pins.png" class="lil-img surg-img">
             <input class="input box surg-input" type="number" id="c7" placeholder="">
+            <div class="mbrr"><br></div>
             <img src="images/surg/scalpel.png" class="lil-img surg-img">
             <input class="input box surg-input" type="number" id="c8" placeholder="">
-            <br>
+            <div class="mbr"><br></div>
 
             <img src="images/surg/splint.png" class="lil-img surg-img">
             <input class="input box surg-input" type="number" id="c9" placeholder="">
+            <div class="mbrr"><br></div>
             <img src="images/surg/sponge.png" class="lil-img surg-img">
             <input class="input box surg-input" type="number" id="c10" placeholder="">
             <img src="images/surg/transfusion.png" class="lil-img surg-img">
             <input class="input box surg-input" type="number" id="c11" placeholder="">
+            <div class="mbrr"><br></div>
             <img src="images/surg/ultrasound.png" class="lil-img surg-img">
             <input class="input box surg-input" type="number" id="c12" placeholder="">
-            <br>
+            <div class="mbr"><br></div>
 
             <div class="info-container">
             <button id="info-button" class="box"><img class="info" src="images/info.png"></button>
-            <div class="info-box surg-info box">
+            <div class="info-box box">
                 <p>Info</p>
                 <ul>
                     <li>- Surg-E input takes in price per 200 Surg-Es</li>
@@ -170,6 +184,7 @@ function loadCalculator(type) {
 
             <span>Num. of packs</span>
             <input class="input box" type="number" id="pack" placeholder="">
+            <div class="mbrr"><br></div>
             <span>Rate</span>
             <input class="input box" type="number" id="rate" placeholder="">
             <img src="images/gala/starfuel.png" class="lil-img crime-img wave">
@@ -189,22 +204,26 @@ function loadCalculator(type) {
             <input class="galainput input box" type="number" id="c1" placeholder="">
             <img src="images/gala/cyborgdiplomat.png" class="lil-img gala-img">
             <input class="galainput input box" type="number" id="c2" placeholder="">
+            <div class="mbrr"><br></div>
             <img src="images/gala/galactibolt.png" class="lil-img gala-img">
             <input class="galainput input box" type="number" id="c3" placeholder="">
             <img src="images/gala/gigablaster.png" class="lil-img gala-img">
             <input class="galainput input box" type="number" id="c4" placeholder="">
+            <div class="mbrr"><br></div>
             <img src="images/gala/growtontorpedo.png" class="lil-img gala-img">
             <input class="galainput input box" type="number" id="c5" placeholder="">
-            <br>
+            <div class="mbr"><br></div>
             </div>
 
             <div class="galaspace">
             <img src="images/gala/hypershields.png" class="lil-img gala-img">
             <input class="galainput input box" type="number" id="c6" placeholder="">
+            <div class="mbrr"><br></div>
             <img src="images/gala/quadriscanner.png" class="lil-img gala-img">
             <input class="galainput input box" type="number" id="c7" placeholder="">
             <img src="images/gala/spacemeds.png" class="lil-img gala-img">
             <input class="galainput input box" type="number" id="c8" placeholder="">
+            <div class="mbrr"><br></div>
             <img src="images/gala/starsupplies.png" class="lil-img gala-img">
             <input class="galainput input box" type="number" id="c9" placeholder="">
             <img src="images/gala/stellardocuments.png" class="lil-img gala-img">
@@ -214,7 +233,7 @@ function loadCalculator(type) {
             
             <div class="info-container">
             <button id="info-button" class="box"><img class="info" src="images/info.png"></button>
-            <div class="info-box surg-info box">
+            <div class="info-box box">
                 <p>Info</p>
                 <ul>
                     <li>- Star fuel and normal tool input takes in number of item per WL</li>

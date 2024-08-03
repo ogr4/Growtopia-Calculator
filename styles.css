@@ -219,10 +219,10 @@ input[type="number"] {
     text-align: center;
     border-radius: 5px;
     padding: 10px 30px 10px 0px;
-    position: absolute;
+    position: fixed;
     z-index: 1;
-    bottom: 100px;
-    
+    bottom: 250px;
+    right: 100px;    
    
     margin-left: 0;
     opacity: 0;
@@ -241,10 +241,6 @@ input[type="number"] {
 .info-container {
     position: relative;
     display: inline-block;
-}
-
-.surg-info {
-    transform: translate(900px, 30px);
 }
 
 .margin-p {
@@ -267,10 +263,137 @@ input[type="number"] {
     margin-top: 20px;
 }
 
-@media (max-width:600px) {
+.mbr {
+    height: 0;
+    width: 0;
+}
+
+.mbrr {
+    display: none;
+}
+
+@media (max-width:1500px) {
     
     .box {
         height: auto;
+        color: #FFF;
+        padding: 5px 0px;
+        margin: 0px 0px 0px 0px;
+        font-size: 10px;
+    }
+    
+    .title {
+        font-size: 35px;
+        padding-left: 10px;
+        margin-top: 10px;
+    }
+    
+    .logo {
+        margin-top: 10px;
+        height: 40px;
     }
 
-}
+    .link-text {
+        display: none;
+    }
+    
+    .lil-img {
+        padding: 0;
+    }
+
+    .link {
+        font-size: 30px;
+        padding: 10px 10px 10px 10px;
+        margin: 0 10px 0 10px;
+    }
+
+    #input-fields{
+        margin-top: 15px;
+        margin-left: 8vw;
+        font-size: 25px;
+    }
+    
+    .calc {
+        display: block;
+        margin-left: 10px;
+        margin-top: 30px;
+    }
+
+    #calculate-button {
+        font-size: 50px;
+        bottom: 50px;
+        right: 50px;   
+        z-index: 1;
+    }
+    
+    .input {
+        margin-left: 0;
+        margin-right: 30px;
+        font-size: 35px;
+        padding: 0px 0px 0px 4px;
+        width: 60px;
+        margin-top: 25px;
+    }
+
+    .crime-img {
+        margin-right: 0;
+    }
+
+    .surg-img {
+        margin-right: 0;
+    }
+
+    .galaspace {
+        margin-top: 0;
+        display: inline;
+    }
+
+    .wave {
+        margin-right: 5px;
+    }
+
+    .info-box {
+        width: 330px;
+        height: 400px;
+
+        position: fixed;
+        bottom: 15%;
+        right: 6%;
+        font-size: 20px;
+        text-align: center;
+        
+        padding: 10px 30px 10px 0px;
+    }
+
+    .surg-info {
+        transform: none;
+    }
+
+    #info-button {
+        height: 75px;
+        bottom: 51px;
+        right: 320px;   
+        z-index: 1;
+    }
+    
+    .info {
+        height: 55px;
+    }
+
+    #result {
+        padding-left: 20px;
+        padding-top: 40px;
+        font-size: 30px;
+        padding-bottom: 170px;
+    }
+
+    .mbr {
+        display: none;
+    }
+    .mbrr {
+        display: block;
+        height: 0px;
+    }
+
+    }
+    
